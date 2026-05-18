@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#2563eb" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="application-name" content="DiaPro" />
+  <meta name="description" content="DiaPro - aplicativo Android para tarefas, estudos, trabalhos e progresso diário." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAAE/0lEQVR4nO3dMW7UQBiGYQfRI0VIEXVERK4Qur0EJQUcA6pcI00apFyCDq4AikSNFkKOsKKwtCzexGv7H8983/h9RAFFwnj06vdsEm+OPlz8aZDFzfmm9BLSe1J6AQvy5luFu13hJSmrr6HarkdfZQ1VdTEuamqonivxUk1DlVwGSiGgYuoYQjVcg68KGrK/AHfuDXmvvg7WDRkvHQoISILvEHJdd31MG7JcNHQQkBDHIeS3YkghIC12Q8hsuUvg1ZDTWiGIgBQZDSGbhUITAYlyGUIeq4QsAtJlMYQMlghlBIQQApKmfxdTXx/EEZA68SEkvTjoIyCEEJAB5buY7spggYAQQkAeZO9iosuCCwJCCAHZ0LyLKa4JRggIIQSEkKelF3DY5Zfj0kso5uPr+9JLOOBI81cdLDmax7Qxqf2+BLmASKff2fu70kv4j9AtjHSGuL163ihlpHKIpp5R2owUlJ9ApDONyCgqPIGoJ6j4KCoZEPUkUbahYgFRT0IFGyoTEPUkV6ohlVdhMFUgIMbPTIoModwBUc+s8jfELQwhWQNi/GSQeQgxgRCSLyDGTzY5hxATCCEEhBACQkimgDgAZZbtGFT+54FGOf36dvv3HxfXBVeCltMtbLee/X+iCJsJ9GAup1/fDpxDxy9epV7RXO5/fi+9hBE8JlDPsBkyh4zqadxW6xEQZBFQtdarHI8gegTUc9AZcgbyOlUkXO16tdn+SfU5O2wO0T8urvePO8NfyXs1NIfdhk4+JxscHhOo1cmFrwNNlnAs2UygFtGk1TYUGUhmAWEO21E0oSSnWxjmNuG+RkDoGpURAeFhAzMiIPQ5mBEB4bCehggIgzw2iggII+w3REAYpzOKCAhTbBsiIEzUNkRAmG692hAQQggIIQSEEAJCCAEhhIAQQkAIMfuRVt5cQY3TBOLNFQTZTCDeXEGTxwTizRVkeQQEWQSEEI+AeHMFWTaHaN5cQZPHBGrx5gqCbCZQi2jUOE0gCCIghBAQQggIIQSEEAJCCAEhhIAQQkAIISCEEBBCCAghBIQQAkIIASGEgBBCQAghIISY/Ugrz8arcZpAPBsvyGYC8Wy8Jo8JxLPxsjwCgiwCQohHQDwbL8vmEM2z8Zo8JlCLZ+MFPb0537z5ZpMR0ah50jTNzfnm5nzcbwsf6+Pr+1k/PzqeffqV5z/6N3syZIT6dG9eNIRRHjj9MIow3KPH5+QZcQzKJtsBqDn4Mp5phH6DXsCnyoghlEHO8dOM+kIi0wj7jl6++z3tIyd/+fHyy/G0D8RBmcdPE/lWxuSBxI1sJvnraeLfTN02ZPT9ECQ0/RbWY0hM3MjSKjJ+mpkC2tUTEw2lUqqeJkNAHZ2eaCiuYD1N/oD23V49L7sAa2XraRQCapHRWMXTaam8dDp7f1d6CU5E6ml0JtAWo6ifTjotuYBaZLRPLZ2WaEC7lhyTZjS7DAIaaL3iG70FqByiYYqAEFJPQCef67kWI2w6QggIIQSEEAJCCAEhpKqAeCGWHzuOEAJCCAEhpLaAOAZlxnYjhIAQQkAIqTAgjkE5sdcIISCE1BkQd7Fs2GiEVBsQQygPdhkhBISQmgPiLpYBW4yQygNiCM2N/UVI/QExhGbF5iJkEQExhObDziJkKQExhGayoG2loTmwpwhZVkAMoeQWt6E0lBa7iZAlBsQQSmihW0lDqSx3H2koib8LW3ZCvZvLHwAAAABJRU5ErkJggg==" />
+  <title>DiaPro Android</title>
+  <script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=QQKHHOA1VK6Ub1eS2VRisOGWdPvgNM4K45wdp02NnF490tcv7u3uY0QKvIInEKBzd3pptR_lo4j09KsfD1VU3PiZKxjRNMpytvhM_7PE8RUMU4M7Q5x7brSzJLXjptdQlzfoYd5AMNpg81UUHPWFiNPsC8gOWL8D_SlvSB_HWci9oxRgJsTAE3j-qs_l81sAMk6UoxQz9qw79mmPto7PjjrY0EMk97EPQfAF4dn7Mtq7GLreIrVXGzFUmKTZJQM7bvr4buvEcRHr3K1SGs2Mcw" charset="UTF-8"></script><style>
+    :root {
+      --bg: #f3f6fb;
+      --card: rgba(255,255,255,.94);
+      --soft: rgba(255,255,255,.66);
+      --text: #111827;
+      --muted: #6b7280;
+      --line: rgba(15,23,42,.10);
+      --primary: #2563eb;
+      --primary-2: #7c3aed;
+      --green: #16a34a;
+      --red: #dc2626;
+      --yellow: #ca8a04;
+      --radius: 24px;
+      --shadow: 0 12px 32px rgba(15,23,42,.10);
+      --safe-top: env(safe-area-inset-top);
+      --safe-bottom: env(safe-area-inset-bottom);
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37,99,235,.22), transparent 32%),
+        radial-gradient(circle at top right, rgba(124,58,237,.18), transparent 26%),
+        linear-gradient(180deg, #f8fbff 0%, var(--bg) 50%, #eef3fb 100%);
+      padding-top: var(--safe-top);
+    }
+
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+
+    .app {
+      max-width: 620px;
+      min-height: 100vh;
+      margin: 0 auto;
+      padding-bottom: calc(94px + var(--safe-bottom));
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      padding: 16px 16px 12px;
+      background: rgba(243,246,251,.84);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(255,255,255,.72);
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(37,99,235,.24);
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    .brand h1 { margin: 0; font-size: 28px; line-height: 1; letter-spacing: -.05em; }
+    .brand p { margin: 3px 0 0; color: var(--muted); font-size: 12px; }
+
+    .add-btn {
+      width: 50px;
+      height: 50px;
+      border: 0;
+      border-radius: 18px;
+      color: white;
+      background: var(--primary);
+      font-size: 30px;
+      line-height: 1;
+      box-shadow: 0 12px 26px rgba(37,99,235,.28);
+    }
+
+    .page { display: none; padding: 16px; animation: appear .16s ease-out; }
+    .page.active { display: block; }
+    @keyframes appear { from { opacity:.45; transform: translateY(7px); } to { opacity:1; transform:none; } }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.78);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .ring {
+      --p: 0;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      position: relative;
+      background: conic-gradient(var(--primary) calc(var(--p) * 1%), rgba(37,99,235,.12) 0);
+      box-shadow: inset 0 0 0 1px rgba(37,99,235,.10);
+    }
+
+    .ring::before {
+      content: "";
+      position: absolute;
+      inset: 13px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: inset 0 0 0 1px rgba(15,23,42,.08);
+    }
+
+    .ring strong {
+      position: relative;
+      font-size: 26px;
+      letter-spacing: -.04em;
+    }
+
+    .hero h2 {
+      margin-bottom: 8px;
+      font-size: 22px;
+      letter-spacing: -.035em;
+    }
+
+    .hero p {
+      margin-bottom: 0;
+      line-height: 1.38;
+      color: var(--muted);
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 18px 3px 12px;
+    }
+
+    .title-row h3 { margin: 0; font-size: 20px; letter-spacing: -.03em; }
+    .muted { color: var(--muted); }
+    .small { color: var(--muted); font-size: 12px; }
+
+    .chips {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 4px;
+    }
+    .chips::-webkit-scrollbar { display:none; }
+
+    .chip {
+      min-height: 42px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.72);
+      border-radius: 999px;
+      padding: 10px 14px;
+      white-space: nowrap;
+      color: var(--text);
+      font-weight: 650;
+    }
+    .chip.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+      box-shadow: 0 8px 20px rgba(37,99,235,.20);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(255,255,255,.80);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 8px 20px rgba(15,23,42,.07);
+    }
+    .stat strong {
+      display:block;
+      font-size: 32px;
+      line-height: 1;
+      letter-spacing: -.05em;
+      margin-bottom: 6px;
+    }
+
+    .task-list { display: grid; gap: 12px; }
+
+    .task {
+      display: grid;
+      grid-template-columns: 42px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.80);
+      border-radius: 22px;
+      box-shadow: 0 8px 24px rgba(15,23,42,.08);
+      padding: 14px;
+    }
+
+    .check {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 2px solid rgba(37,99,235,.32);
+      background: white;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 17px;
+    }
+    .task.done .check { background: var(--green); border-color: var(--green); }
+    .task.done .task-title { color: var(--muted); text-decoration: line-through; }
+
+    .task-title {
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 1.24;
+      margin-bottom: 6px;
+    }
+
+    .task-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .badge {
+      border-radius: 999px;
+      padding: 4px 8px;
+      background: rgba(37,99,235,.10);
+      color: var(--primary);
+      font-weight: 750;
+    }
+    .badge-work { background: rgba(124,58,237,.10); color: var(--primary-2); }
+    .prio-Alta { background: rgba(220,38,38,.10); color: var(--red); }
+    .prio-Média { background: rgba(202,138,4,.12); color: var(--yellow); }
+    .prio-Baixa { background: rgba(22,163,74,.10); color: var(--green); }
+
+    .mini-actions {
+      display: grid;
+      gap: 7px;
+    }
+    .mini {
+      border: 0;
+      width: 38px;
+      height: 34px;
+      border-radius: 13px;
+      color: var(--text);
+      background: rgba(15,23,42,.06);
+      font-weight: 800;
+    }
+
+    .empty {
+      text-align: center;
+      border: 1px dashed rgba(15,23,42,.18);
+      border-radius: 22px;
+      color: var(--muted);
+      background: rgba(255,255,255,.52);
+      padding: 28px 18px;
+      line-height: 1.45;
+    }
+
+    .primary, .secondary, .danger {
+      border: 0;
+      border-radius: 18px;
+      min-height: 48px;
+      padding: 0 16px;
+      font-weight: 850;
+    }
+    .primary { background: var(--primary); color: white; box-shadow: 0 10px 24px rgba(37,99,235,.23); }
+    .secondary { background: rgba(15,23,42,.06); color: var(--text); }
+    .danger { background: rgba(220,38,38,.10); color: var(--red); }
+
+    .search {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px 16px;
+      min-height: 50px;
+      outline: 0;
+      background: rgba(255,255,255,.76);
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+    .dow {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .day {
+      min-height: 54px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.66);
+      padding: 8px 6px;
+      text-align: center;
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+    }
+    .day.today { border-color: var(--primary); box-shadow: inset 0 0 0 1px var(--primary); }
+    .day.selected { background: var(--primary); color: white; }
+    .day small { font-size: 10px; opacity: .8; }
+
+    .bars {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      height: 210px;
+      align-items: end;
+    }
+    .bar-item {
+      display: grid;
+      grid-template-rows: 1fr auto auto;
+      height: 100%;
+      gap: 7px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .bar-bg {
+      height: 100%;
+      border-radius: 999px;
+      background: rgba(37,99,235,.10);
+      display: flex;
+      align-items: end;
+      overflow: hidden;
+    }
+    .bar {
+      width: 100%;
+      min-height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #60a5fa, #2563eb);
+    }
+
+    .bottom-nav {
+      position: fixed;
+      z-index: 40;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(100%, 620px);
+      padding: 10px 10px calc(10px + var(--safe-bottom));
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(24px);
+      border-top: 1px solid rgba(15,23,42,.08);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 5px;
+    }
+    .nav {
+      border: 0;
+      border-radius: 16px;
+      background: transparent;
+      color: var(--muted);
+      padding: 7px 2px;
+      min-height: 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      font-weight: 750;
+    }
+    .nav span:first-child { font-size: 21px; }
+    .nav span:last-child { font-size: 10px; }
+    .nav.active { background: rgba(37,99,235,.10); color: var(--primary); }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      background: rgba(15,23,42,.36);
+      align-items: flex-end;
+      justify-content: center;
+      padding: 12px;
+    }
+    .modal.open { display:flex; }
+
+    .sheet {
+      width: min(100%, 620px);
+      max-height: min(90vh, 790px);
+      overflow: auto;
+      background: white;
+      border-radius: 28px;
+      padding: 18px;
+      box-shadow: 0 24px 70px rgba(15,23,42,.28);
+      animation: sheet .18s ease-out;
+    }
+    @keyframes sheet { from { opacity:.55; transform: translateY(24px); } to { opacity:1; transform: none; } }
+
+    label {
+      display: block;
+      margin: 14px 0 7px;
+      color: #374151;
+      font-size: 13px;
+      font-weight: 850;
+    }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid rgba(15,23,42,.12);
+      border-radius: 16px;
+      padding: 13px 14px;
+      min-height: 49px;
+      color: var(--text);
+      background: #f9fafb;
+      outline: 0;
+    }
+    textarea { min-height: 92px; resize: vertical; }
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(37,99,235,.52);
+      box-shadow: 0 0 0 4px rgba(37,99,235,.10);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .actions > button { flex: 1; }
+
+    .note-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+      background: rgba(255,255,255,.62);
+      margin-bottom: 10px;
+    }
+    .note-card h4 { margin: 0 0 6px; }
+    .copyright {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 14px;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 430px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .ring { margin: 0 auto; }
+      .form-grid { grid-template-columns: 1fr; }
+      .brand h1 { font-size: 25px; }
+      .logo { width: 44px; height: 44px; border-radius: 15px; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1020;
+        --card: rgba(17,24,39,.88);
+        --soft: rgba(17,24,39,.66);
+        --text: #f9fafb;
+        --muted: #a1a1aa;
+        --line: rgba(255,255,255,.11);
+      }
+      body {
+        background:
+          radial-gradient(circle at top left, rgba(37,99,235,.20), transparent 35%),
+          radial-gradient(circle at top right, rgba(124,58,237,.18), transparent 28%),
+          #080b14;
+      }
+      .header { background: rgba(8,11,20,.84); border-bottom-color: rgba(255,255,255,.08); }
+      .ring::before { background: #111827; }
+      .chip, .search, .stat, .day, .note-card { background: rgba(255,255,255,.06); }
+      .check { background: rgba(255,255,255,.10); }
+      .mini, .secondary { background: rgba(255,255,255,.08); color: var(--text); }
+      .bottom-nav { background: rgba(17,24,39,.86); border-top-color: rgba(255,255,255,.09); }
+      .sheet { background: #111827; }
+      input, select, textarea { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.12); color: var(--text); }
+      label { color: #d1d5db; }
+      .empty { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.13); }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="top">
+        <div class="brand">
+          <div class="logo">DP</div>
+          <div>
+            <h1>DiaPro</h1>
+            <p id="dateNow">Tarefas, estudos e trabalhos</p>
+          </div>
+        </div>
+        <button class="add-btn" onclick="openItemModal()" aria-label="Adicionar">+</button>
+      </div>
+    </header>
+
+    <section class="page active" id="page-home">
+      <div class="card hero">
+        <div class="ring" id="dailyRing" style="--p:0"><strong id="dailyPct">0%</strong></div>
+        <div>
+          <h2 id="greeting">Olá!</h2>
+          <p id="dailyMessage">Organiza as tarefas do teu dia e acompanha o progresso.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="stat"><strong id="homePending">0</strong><span class="small">Pendentes hoje</span></div>
+        <div class="stat"><strong id="homeDone">0</strong><span class="small">Concluídas hoje</span></div>
+      </div>
+
+      <div class="title-row">
+        <h3>Escolher dia</h3>
+        <span class="small" id="selectedDateLabel"></span>
+      </div>
+      <div class="chips" id="dateChips"></div>
+
+      <div class="title-row">
+        <h3>Tarefas do dia</h3>
+        <span class="small" id="todayCount"></span>
+      </div>
+      <div class="task-list" id="todayList"></div>
+
+      <div class="copyright">
+        © 2026 Luís Afonso Mapanga. Todos os direitos reservados.
+      </div>
+    </section>
+
+    <section class="page" id="page-tasks">
+      <input class="search" id="taskSearch" placeholder="Pesquisar por tarefa, disciplina, categoria ou nota" oninput="renderTasks()" />
+      <div class="chips" id="filterChips">
+        <button class="chip active" data-filter="all" onclick="setFilter('all')">Todas</button>
+        <button class="chip" data-filter="pending" onclick="setFilter('pending')">Pendentes</button>
+        <button class="chip" data-filter="done" onclick="setFilter('done')">Concluídas</button>
+        <button class="chip" data-filter="Tarefa" onclick="setFilter('Tarefa')">Tarefas</button>
+        <button class="chip" data-filter="Trabalho" onclick="setFilter('Trabalho')">Trabalhos</button>
+        <button class="chip" data-filter="Estudo" onclick="setFilter('Estudo')">Estudo</button>
+        <button class="chip" data-filter="Prova" onclick="setFilter('Prova')">Provas</button>
+        <button class="chip" data-filter="Alta" onclick="setFilter('Alta')">Alta prioridade</button>
+      </div>
+
+      <div class="title-row">
+        <h3>Lista geral</h3>
+        <span class="small" id="allCount"></span>
+      </div>
+      <div class="task-list" id="allList"></div>
+    </section>
+
+    <section class="page" id="page-calendar">
+      <div class="card">
+        <div class="row">
+          <button class="secondary" onclick="changeMonth(-1)">‹</button>
+          <div style="text-align:center">
+            <h3 id="monthTitle" style="margin-bottom:3px"></h3>
+            <span class="small">Calendário mensal</span>
+          </div>
+          <button class="secondary" onclick="changeMonth(1)">›</button>
+        </div>
+      </div>
+      <div class="calendar" id="calendarGrid"></div>
+      <div class="title-row">
+        <h3>Itens do dia</h3>
+        <span class="small" id="calendarDayLabel"></span>
+      </div>
+      <div class="task-list" id="calendarDayList"></div>
+    </section>
+
+    <section class="page" id="page-stats">
+      <div class="grid-2">
+        <div class="stat"><strong id="statTotal">0</strong><span class="small">Total</span></div>
+        <div class="stat"><strong id="statCompleted">0</strong><span class="small">Concluídas</span></div>
+        <div class="stat"><strong id="statPending">0</strong><span class="small">Pendentes</span></div>
+        <div class="stat"><strong id="statHigh">0</strong><span class="small">Alta prioridade</span></div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="title-row" style="margin-top:0">
+          <h3>Últimos 7 dias</h3>
+          <span class="small">progresso diário</span>
+        </div>
+        <div class="bars" id="weeklyBars"></div>
+      </div>
+
+      <div class="card">
+        <div class="title-row" style="margin-top:0">
+          <h3>Resumo por categoria</h3>
+          <span class="small">concluídas/total</span>
+        </div>
+        <div id="categoryStats"></div>
+      </div>
+
+      <div class="card">
+        <div class="title-row" style="margin-top:0">
+          <h3>Resumo por disciplina</h3>
+          <span class="small">estudantes</span>
+        </div>
+        <div id="subjectStats"></div>
+      </div>
+    </section>
+
+    <section class="page" id="page-more">
+      <div class="card">
+        <h3>Perfil</h3>
+        <label for="nameInput">Nome do utilizador</label>
+        <input id="nameInput" placeholder="Ex: Luís" />
+        <div class="actions">
+          <button class="primary" onclick="saveName()">Guardar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Notas rápidas</h3>
+        <label for="quickNoteTitle">Título</label>
+        <input id="quickNoteTitle" placeholder="Ex: Ideias para amanhã" />
+        <label for="quickNoteText">Nota</label>
+        <textarea id="quickNoteText" placeholder="Escreve uma nota rápida"></textarea>
+        <div class="actions">
+          <button class="primary" onclick="addNote()">Adicionar nota</button>
+        </div>
+        <div id="notesList" style="margin-top:14px"></div>
+      </div>
+
+      <div class="card">
+        <h3>Backup e dados</h3>
+        <p class="muted">Guarda uma cópia dos dados ou importa um backup para outro telemóvel Android.</p>
+        <div class="actions">
+          <button class="secondary" onclick="exportData()">Exportar</button>
+          <button class="secondary" onclick="document.getElementById('importFile').click()">Importar</button>
+        </div>
+        <input id="importFile" type="file" accept="application/json" style="display:none" onchange="importData(event)" />
+        <div class="actions">
+          <button class="danger" onclick="clearCompleted()">Apagar concluídas</button>
+          <button class="danger" onclick="resetAll()">Apagar tudo</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Instalar no Android</h3>
+        <p class="muted">Abre este ficheiro no Google Chrome. Depois toca no menu ⋮ e escolhe <b>Adicionar à tela inicial</b>. Assim o DiaPro aparece como aplicativo.</p>
+      </div>
+
+      <div class="card">
+        <h3>Direitos autorais</h3>
+        <p><b>Aplicativo criado por Luís Afonso Mapanga.</b></p>
+        <p class="muted">© 2026 Luís Afonso Mapanga. Todos os direitos reservados. É proibida a cópia, venda, redistribuição ou alteração do aplicativo sem autorização do autor.</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button class="nav active" data-page="home" onclick="showPage('home')"><span>☀️</span><span>Hoje</span></button>
+    <button class="nav" data-page="tasks" onclick="showPage('tasks')"><span>✅</span><span>Tarefas</span></button>
+    <button class="nav" data-page="calendar" onclick="showPage('calendar')"><span>📅</span><span>Calendário</span></button>
+    <button class="nav" data-page="stats" onclick="showPage('stats')"><span>📊</span><span>Progresso</span></button>
+    <button class="nav" data-page="more" onclick="showPage('more')"><span>⚙️</span><span>Mais</span></button>
+  </nav>
+
+  <div class="modal" id="itemModal" onclick="closeOnBackdrop(event)">
+    <div class="sheet">
+      <h2 id="modalTitle">Novo item</h2>
+
+      <label for="itemTitle">Título</label>
+      <input id="itemTitle" placeholder="Ex: Resolver lista de exercícios" />
+
+      <label for="itemNotes">Descrição / notas</label>
+      <textarea id="itemNotes" placeholder="Detalhes do trabalho, estudo ou tarefa"></textarea>
+
+      <div class="form-grid">
+        <div>
+          <label for="itemType">Tipo</label>
+          <select id="itemType">
+            <option>Tarefa</option>
+            <option>Trabalho</option>
+            <option>Estudo</option>
+            <option>Prova</option>
+            <option>Projeto</option>
+          </select>
+        </div>
+        <div>
+          <label for="itemCategory">Categoria</label>
+          <select id="itemCategory">
+            <option>Estudo</option>
+            <option>Trabalho</option>
+            <option>Pessoal</option>
+            <option>Saúde</option>
+            <option>Finanças</option>
+            <option>Casa</option>
+            <option>Outro</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div>
+          <label for="itemSubject">Disciplina/área</label>
+          <input id="itemSubject" placeholder="Ex: Hidráulica, Matemática" />
+        </div>
+        <div>
+          <label for="itemPriority">Prioridade</label>
+          <select id="itemPriority">
+            <option>Baixa</option>
+            <option selected>Média</option>
+            <option>Alta</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div>
+          <label for="itemDate">Data</label>
+          <input id="itemDate" type="date" />
+        </div>
+        <div>
+          <label for="itemTime">Hora</label>
+          <input id="itemTime" type="time" />
+        </div>
+      </div>
+
+      <label>
+        <input id="itemDone" type="checkbox" style="width:auto;min-height:auto;margin-right:8px" />
+        Marcar como concluído
+      </label>
+
+      <div class="actions">
+        <button class="secondary" onclick="closeItemModal()">Cancelar</button>
+        <button class="primary" onclick="saveItem()">Guardar</button>
+      </div>
+      <div class="actions" id="deleteAction" style="display:none">
+        <button class="danger" onclick="deleteEditingItem()">Apagar item</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const APP_COPYRIGHT = "© 2026 Luís Afonso Mapanga. Todos os direitos reservados.";
+    const TASK_KEY = "diapro_android_items_v2";
+    const NOTE_KEY = "diapro_android_notes_v1";
+    const NAME_KEY = "diapro_android_name_v1";
+
+    let items = [];
+    let notes = [];
+    let selectedDate = startOfDay(new Date());
+    let visibleMonth = new Date();
+    let filter = "all";
+    let editingId = null;
+
+    const priorityRank = { "Alta": 3, "Média": 2, "Baixa": 1 };
+    const categories = ["Estudo", "Trabalho", "Pessoal", "Saúde", "Finanças", "Casa", "Outro"];
+    const weekdays = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+
+    function startOfDay(date) {
+      const d = new Date(date);
+      d.setHours(0,0,0,0);
+      return d;
+    }
+
+    function toInputDate(date) {
+      const d = new Date(date);
+      const y = d.getFullYear();
+      const m = String(d.getMonth()+1).padStart(2, "0");
+      const day = String(d.getDate()).padStart(2, "0");
+      return `${y}-${m}-${day}`;
+    }
+
+    function parseDate(str) {
+      const [y,m,d] = String(str).split("-").map(Number);
+      return new Date(y, (m || 1)-1, d || 1);
+    }
+
+    function formatDate(date) {
+      return new Intl.DateTimeFormat("pt-PT", { weekday:"short", day:"2-digit", month:"short" }).format(date);
+    }
+
+    function formatLong(date) {
+      return new Intl.DateTimeFormat("pt-PT", { weekday:"long", day:"2-digit", month:"long", year:"numeric" }).format(date);
+    }
+
+    function escapeHTML(str) {
+      return String(str ?? "").replace(/[&<>"']/g, s => ({
+        "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#039;"
+      }[s]));
+    }
+
+    function load() {
+      const saved = localStorage.getItem(TASK_KEY);
+      items = saved ? JSON.parse(saved) : demoItems();
+      if (!saved) saveItems();
+
+      notes = JSON.parse(localStorage.getItem(NOTE_KEY) || "[]");
+      document.getElementById("nameInput").value = localStorage.getItem(NAME_KEY) || "Estudante";
+
+      renderAll();
+      registerSW();
+    }
+
+    function saveItems() {
+      localStorage.setItem(TASK_KEY, JSON.stringify(items));
+    }
+
+    function saveNotes() {
+      localStorage.setItem(NOTE_KEY, JSON.stringify(notes));
+    }
+
+    function demoItems() {
+      const today = toInputDate(new Date());
+      const tomorrow = toInputDate(new Date(Date.now() + 86400000));
+      const after = toInputDate(new Date(Date.now() + 2*86400000));
+      return [
+        {
+          id: crypto.randomUUID(), title:"Rever matéria da aula", notes:"Fazer resumo dos pontos principais.",
+          type:"Estudo", category:"Estudo", subject:"Hidráulica", priority:"Alta", date:today, time:"18:00",
+          done:false, createdAt:new Date().toISOString()
+        },
+        {
+          id: crypto.randomUUID(), title:"Entregar trabalho prático", notes:"Verificar capa, anexos e referências.",
+          type:"Trabalho", category:"Estudo", subject:"Engenharia", priority:"Alta", date:today, time:"20:00",
+          done:false, createdAt:new Date().toISOString()
+        },
+        {
+          id: crypto.randomUUID(), title:"Caminhada ou exercício leve", notes:"20 minutos para manter rotina.",
+          type:"Tarefa", category:"Saúde", subject:"", priority:"Média", date:today, time:"",
+          done:true, createdAt:new Date().toISOString()
+        },
+        {
+          id: crypto.randomUUID(), title:"Preparar plano de estudo", notes:"Organizar tarefas de amanhã.",
+          type:"Estudo", category:"Estudo", subject:"Planeamento", priority:"Média", date:tomorrow, time:"",
+          done:false, createdAt:new Date().toISOString()
+        },
+        {
+          id: crypto.randomUUID(), title:"Pagar conta / organizar despesas", notes:"Confirmar valores antes do pagamento.",
+          type:"Tarefa", category:"Finanças", subject:"", priority:"Baixa", date:after, time:"",
+          done:false, createdAt:new Date().toISOString()
+        }
+      ];
+    }
+
+    function registerSW() {
+      if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+        navigator.serviceWorker.register("service-worker.js").catch(() => {});
+      }
+    }
+
+    function showPage(page) {
+      document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+      document.getElementById("page-" + page).classList.add("active");
+      document.querySelectorAll(".nav").forEach(n => n.classList.toggle("active", n.dataset.page === page));
+      renderAll();
+    }
+
+    function renderAll() {
+      renderHeader();
+      renderDateChips();
+      renderHome();
+      renderTasks();
+      renderCalendar();
+      renderStats();
+      renderNotes();
+    }
+
+    function renderHeader() {
+      document.getElementById("dateNow").textContent = formatLong(new Date());
+      const name = localStorage.getItem(NAME_KEY) || "Estudante";
+      document.getElementById("greeting").textContent = "Olá, " + name;
+    }
+
+    function sortItems(a,b) {
+      if (a.done !== b.done) return a.done ? 1 : -1;
+      if (a.date !== b.date) return a.date.localeCompare(b.date);
+      if (priorityRank[a.priority] !== priorityRank[b.priority]) return priorityRank[b.priority] - priorityRank[a.priority];
+      return (a.time || "99:99").localeCompare(b.time || "99:99");
+    }
+
+    function getItemsForDate(date) {
+      const key = toInputDate(date);
+      return items.filter(i => i.date === key).sort(sortItems);
+    }
+
+    function renderDateChips() {
+      const wrap = document.getElementById("dateChips");
+      wrap.innerHTML = "";
+      for (let offset = -3; offset <= 7; offset++) {
+        const d = new Date();
+        d.setDate(d.getDate() + offset);
+        const clean = startOfDay(d);
+        const btn = document.createElement("button");
+        btn.className = "chip" + (clean.getTime() === selectedDate.getTime() ? " active" : "");
+        btn.textContent = offset === 0 ? "Hoje" : formatDate(clean);
+        btn.onclick = () => {
+          selectedDate = clean;
+          visibleMonth = new Date(clean);
+          renderAll();
+        };
+        wrap.appendChild(btn);
+      }
+    }
+
+    function renderHome() {
+      const daily = getItemsForDate(selectedDate);
+      const done = daily.filter(i => i.done).length;
+      const pending = daily.length - done;
+      const pct = daily.length ? Math.round(done / daily.length * 100) : 0;
+
+      document.getElementById("dailyRing").style.setProperty("--p", pct);
+      document.getElementById("dailyPct").textContent = pct + "%";
+      document.getElementById("homePending").textContent = pending;
+      document.getElementById("homeDone").textContent = done;
+      document.getElementById("selectedDateLabel").textContent = formatLong(selectedDate);
+      document.getElementById("todayCount").textContent = `${done}/${daily.length} concluídas`;
+
+      let message = "Organiza as tarefas do teu dia e acompanha o progresso.";
+      if (daily.length === 0) message = "Sem tarefas neste dia. Adiciona uma tarefa para começar.";
+      else if (pct === 100) message = "Excelente! Concluíste tudo deste dia.";
+      else if (pct >= 60) message = "Bom ritmo. Continua até fechar o dia.";
+      else message = "Uma tarefa de cada vez. Mantém o foco.";
+
+      document.getElementById("dailyMessage").textContent = message;
+      document.getElementById("todayList").innerHTML = daily.length ? daily.map(itemHTML).join("") : emptyHTML("Sem tarefas para este dia.");
+    }
+
+    function itemHTML(i) {
+      const note = i.notes ? `<span>${escapeHTML(i.notes)}</span>` : "";
+      const subject = i.subject ? `<span>📚 ${escapeHTML(i.subject)}</span>` : "";
+      const time = i.time ? `<span>🕒 ${escapeHTML(i.time)}</span>` : "";
+      return `
+        <article class="task ${i.done ? "done" : ""}">
+          <button class="check" onclick="toggleItem('${i.id}')" aria-label="Marcar como concluído">${i.done ? "✓" : ""}</button>
+          <div onclick="editItem('${i.id}')">
+            <div class="task-title">${escapeHTML(i.title)}</div>
+            <div class="task-meta">
+              <span class="badge ${i.type === "Trabalho" ? "badge-work" : ""}">${escapeHTML(i.type)}</span>
+              <span class="badge">${escapeHTML(i.category)}</span>
+              <span class="badge prio-${i.priority}">${escapeHTML(i.priority)}</span>
+              <span>📅 ${escapeHTML(i.date)}</span>
+              ${time}
+              ${subject}
+              ${note}
+            </div>
+          </div>
+          <div class="mini-actions">
+            <button class="mini" onclick="editItem('${i.id}')" aria-label="Editar">✎</button>
+            <button class="mini" onclick="deleteItem('${i.id}')" aria-label="Apagar">×</button>
+          </div>
+        </article>
+      `;
+    }
+
+    function emptyHTML(text) {
+      return `<div class="empty">${text}<br><br><button class="primary" onclick="openItemModal()">Adicionar agora</button></div>`;
+    }
+
+    function renderTasks() {
+      const q = (document.getElementById("taskSearch")?.value || "").trim().toLowerCase();
+      let list = [...items];
+
+      if (filter === "pending") list = list.filter(i => !i.done);
+      else if (filter === "done") list = list.filter(i => i.done);
+      else if (["Tarefa","Trabalho","Estudo","Prova"].includes(filter)) list = list.filter(i => i.type === filter);
+      else if (filter === "Alta") list = list.filter(i => i.priority === "Alta");
+
+      if (q) {
+        list = list.filter(i =>
+          i.title.toLowerCase().includes(q) ||
+          i.notes.toLowerCase().includes(q) ||
+          i.category.toLowerCase().includes(q) ||
+          i.type.toLowerCase().includes(q) ||
+          i.priority.toLowerCase().includes(q) ||
+          (i.subject || "").toLowerCase().includes(q)
+        );
+      }
+
+      list.sort(sortItems);
+      document.querySelectorAll("#filterChips .chip").forEach(c => c.classList.toggle("active", c.dataset.filter === filter));
+      document.getElementById("allCount").textContent = list.length + " item(ns)";
+      document.getElementById("allList").innerHTML = list.length ? list.map(itemHTML).join("") : emptyHTML("Nenhum item encontrado.");
+    }
+
+    function setFilter(value) {
+      filter = value;
+      renderTasks();
+    }
+
+    function renderCalendar() {
+      const grid = document.getElementById("calendarGrid");
+      grid.innerHTML = "";
+      const year = visibleMonth.getFullYear();
+      const month = visibleMonth.getMonth();
+      const first = new Date(year, month, 1);
+      const last = new Date(year, month + 1, 0);
+      const monthName = new Intl.DateTimeFormat("pt-PT", { month:"long", year:"numeric" }).format(first);
+      document.getElementById("monthTitle").textContent = monthName.charAt(0).toUpperCase() + monthName.slice(1);
+
+      weekdays.forEach(w => {
+        const d = document.createElement("div");
+        d.className = "dow";
+        d.textContent = w;
+        grid.appendChild(d);
+      });
+
+      for (let i = 0; i < first.getDay(); i++) {
+        const blank = document.createElement("div");
+        grid.appendChild(blank);
+      }
+
+      for (let day = 1; day <= last.getDate(); day++) {
+        const date = new Date(year, month, day);
+        const dateKey = toInputDate(date);
+        const dayItems = items.filter(i => i.date === dateKey);
+        const done = dayItems.filter(i => i.done).length;
+        const div = document.createElement("button");
+        div.className = "day";
+        if (toInputDate(new Date()) === dateKey) div.classList.add("today");
+        if (toInputDate(selectedDate) === dateKey) div.classList.add("selected");
+        div.innerHTML = `<strong>${day}</strong><small>${dayItems.length ? done + "/" + dayItems.length : ""}</small>`;
+        div.onclick = () => {
+          selectedDate = startOfDay(date);
+          renderAll();
+        };
+        grid.appendChild(div);
+      }
+
+      const daily = getItemsForDate(selectedDate);
+      document.getElementById("calendarDayLabel").textContent = formatDate(selectedDate);
+      document.getElementById("calendarDayList").innerHTML = daily.length ? daily.map(itemHTML).join("") : emptyHTML("Sem itens neste dia.");
+    }
+
+    function changeMonth(delta) {
+      visibleMonth = new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() + delta, 1);
+      renderCalendar();
+    }
+
+    function renderStats() {
+      const total = items.length;
+      const done = items.filter(i => i.done).length;
+      const pending = total - done;
+      const high = items.filter(i => i.priority === "Alta" && !i.done).length;
+      document.getElementById("statTotal").textContent = total;
+      document.getElementById("statCompleted").textContent = done;
+      document.getElementById("statPending").textContent = pending;
+      document.getElementById("statHigh").textContent = high;
+
+      const bars = document.getElementById("weeklyBars");
+      bars.innerHTML = "";
+      for (let offset = 6; offset >= 0; offset--) {
+        const d = new Date();
+        d.setDate(d.getDate() - offset);
+        const list = getItemsForDate(d);
+        const completed = list.filter(i => i.done).length;
+        const pct = list.length ? Math.round(completed / list.length * 100) : 0;
+        const item = document.createElement("div");
+        item.className = "bar-item";
+        item.innerHTML = `
+          <div class="bar-bg"><div class="bar" style="height:${Math.max(6, pct)}%"></div></div>
+          <strong>${pct}%</strong>
+          <span>${new Intl.DateTimeFormat("pt-PT", {weekday:"short"}).format(d).replace(".","")}</span>
+        `;
+        bars.appendChild(item);
+      }
+
+      document.getElementById("categoryStats").innerHTML = makeProgressRows(categories.map(cat => {
+        const list = items.filter(i => i.category === cat);
+        return { label: cat, total: list.length, done: list.filter(i => i.done).length };
+      }));
+
+      const subjects = [...new Set(items.map(i => (i.subject || "").trim()).filter(Boolean))].sort();
+      document.getElementById("subjectStats").innerHTML = subjects.length ? makeProgressRows(subjects.map(s => {
+        const list = items.filter(i => (i.subject || "").trim() === s);
+        return { label: s, total: list.length, done: list.filter(i => i.done).length };
+      })) : `<div class="empty">Adiciona disciplinas ou áreas nos teus itens para ver este resumo.</div>`;
+    }
+
+    function makeProgressRows(rows) {
+      const html = rows.filter(r => r.total > 0).map(r => {
+        const pct = r.total ? Math.round(r.done / r.total * 100) : 0;
+        return `
+          <div style="margin-bottom:14px">
+            <div class="row" style="margin-bottom:7px"><strong>${escapeHTML(r.label)}</strong><span class="small">${r.done}/${r.total}</span></div>
+            <div style="height:10px;background:rgba(37,99,235,.10);border-radius:999px;overflow:hidden">
+              <div style="height:100%;width:${pct}%;background:var(--primary);border-radius:999px"></div>
+            </div>
+          </div>
+        `;
+      }).join("");
+      return html || `<div class="empty">Ainda não há dados para mostrar.</div>`;
+    }
+
+    function openItemModal(date = selectedDate) {
+      editingId = null;
+      document.getElementById("modalTitle").textContent = "Novo item";
+      document.getElementById("itemTitle").value = "";
+      document.getElementById("itemNotes").value = "";
+      document.getElementById("itemType").value = "Tarefa";
+      document.getElementById("itemCategory").value = "Estudo";
+      document.getElementById("itemSubject").value = "";
+      document.getElementById("itemPriority").value = "Média";
+      document.getElementById("itemDate").value = toInputDate(date);
+      document.getElementById("itemTime").value = "";
+      document.getElementById("itemDone").checked = false;
+      document.getElementById("deleteAction").style.display = "none";
+      document.getElementById("itemModal").classList.add("open");
+      setTimeout(() => document.getElementById("itemTitle").focus(), 120);
+    }
+
+    function closeItemModal() {
+      document.getElementById("itemModal").classList.remove("open");
+    }
+
+    function closeOnBackdrop(e) {
+      if (e.target.id === "itemModal") closeItemModal();
+    }
+
+    function saveItem() {
+      const title = document.getElementById("itemTitle").value.trim();
+      if (!title) {
+        alert("Escreve o título.");
+        return;
+      }
+      const payload = {
+        title,
+        notes: document.getElementById("itemNotes").value.trim(),
+        type: document.getElementById("itemType").value,
+        category: document.getElementById("itemCategory").value,
+        subject: document.getElementById("itemSubject").value.trim(),
+        priority: document.getElementById("itemPriority").value,
+        date: document.getElementById("itemDate").value || toInputDate(new Date()),
+        time: document.getElementById("itemTime").value,
+        done: document.getElementById("itemDone").checked
+      };
+
+      if (editingId) {
+        items = items.map(i => i.id === editingId ? { ...i, ...payload } : i);
+      } else {
+        items.push({ id: crypto.randomUUID(), ...payload, createdAt: new Date().toISOString() });
+      }
+      saveItems();
+      selectedDate = startOfDay(parseDate(payload.date));
+      visibleMonth = parseDate(payload.date);
+      closeItemModal();
+      renderAll();
+    }
+
+    function editItem(id) {
+      const i = items.find(x => x.id === id);
+      if (!i) return;
+      editingId = id;
+      document.getElementById("modalTitle").textContent = "Editar item";
+      document.getElementById("itemTitle").value = i.title;
+      document.getElementById("itemNotes").value = i.notes || "";
+      document.getElementById("itemType").value = i.type || "Tarefa";
+      document.getElementById("itemCategory").value = i.category || "Estudo";
+      document.getElementById("itemSubject").value = i.subject || "";
+      document.getElementById("itemPriority").value = i.priority || "Média";
+      document.getElementById("itemDate").value = i.date || toInputDate(new Date());
+      document.getElementById("itemTime").value = i.time || "";
+      document.getElementById("itemDone").checked = !!i.done;
+      document.getElementById("deleteAction").style.display = "flex";
+      document.getElementById("itemModal").classList.add("open");
+    }
+
+    function toggleItem(id) {
+      items = items.map(i => i.id === id ? { ...i, done: !i.done } : i);
+      saveItems();
+      renderAll();
+    }
+
+    function deleteItem(id) {
+      if (!confirm("Apagar este item?")) return;
+      items = items.filter(i => i.id !== id);
+      saveItems();
+      renderAll();
+    }
+
+    function deleteEditingItem() {
+      if (!editingId) return;
+      const id = editingId;
+      closeItemModal();
+      deleteItem(id);
+    }
+
+    function saveName() {
+      const name = document.getElementById("nameInput").value.trim() || "Estudante";
+      localStorage.setItem(NAME_KEY, name);
+      renderAll();
+      alert("Nome guardado.");
+    }
+
+    function addNote() {
+      const title = document.getElementById("quickNoteTitle").value.trim();
+      const text = document.getElementById("quickNoteText").value.trim();
+      if (!title && !text) {
+        alert("Escreve uma nota.");
+        return;
+      }
+      notes.unshift({ id: crypto.randomUUID(), title: title || "Nota", text, date: new Date().toISOString() });
+      saveNotes();
+      document.getElementById("quickNoteTitle").value = "";
+      document.getElementById("quickNoteText").value = "";
+      renderNotes();
+    }
+
+    function renderNotes() {
+      const list = document.getElementById("notesList");
+      list.innerHTML = notes.length ? notes.map(n => `
+        <div class="note-card">
+          <div class="row">
+            <h4>${escapeHTML(n.title)}</h4>
+            <button class="mini" onclick="deleteNote('${n.id}')">×</button>
+          </div>
+          <p class="muted" style="margin-bottom:6px">${escapeHTML(n.text)}</p>
+          <span class="small">${new Date(n.date).toLocaleString("pt-PT")}</span>
+        </div>
+      `).join("") : `<div class="empty">Sem notas rápidas.</div>`;
+    }
+
+    function deleteNote(id) {
+      notes = notes.filter(n => n.id !== id);
+      saveNotes();
+      renderNotes();
+    }
+
+    function exportData() {
+      const data = {
+        app: "DiaPro Android",
+        author: "Luís Afonso Mapanga",
+        copyright: APP_COPYRIGHT,
+        version: 2,
+        exportedAt: new Date().toISOString(),
+        name: localStorage.getItem(NAME_KEY) || "Estudante",
+        items,
+        notes
+      };
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "DiaPro_backup_" + toInputDate(new Date()) + ".json";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importData(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const data = JSON.parse(reader.result);
+          if (!Array.isArray(data.items)) throw new Error("Formato inválido");
+          items = data.items;
+          notes = Array.isArray(data.notes) ? data.notes : [];
+          if (data.name) localStorage.setItem(NAME_KEY, data.name);
+          saveItems();
+          saveNotes();
+          document.getElementById("nameInput").value = localStorage.getItem(NAME_KEY) || "Estudante";
+          renderAll();
+          alert("Backup importado com sucesso.");
+        } catch(e) {
+          alert("Não foi possível importar este ficheiro.");
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function clearCompleted() {
+      if (!confirm("Apagar todos os itens concluídos?")) return;
+      items = items.filter(i => !i.done);
+      saveItems();
+      renderAll();
+    }
+
+    function resetAll() {
+      if (!confirm("Apagar todos os dados do DiaPro?")) return;
+      items = [];
+      notes = [];
+      saveItems();
+      saveNotes();
+      renderAll();
+    }
+
+    window.addEventListener("keydown", e => {
+      if (e.key === "Escape") closeItemModal();
+    });
+
+    load();
+  </script>
+</body>
+</html>
